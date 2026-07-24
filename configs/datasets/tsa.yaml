@@ -1,0 +1,44 @@
+dataset:
+  name: tsa
+  root: data/raw/tsa
+  raw_dir: data/raw/tsa
+  config_hint: configs/datasets/tsa.yaml
+  target_partition: 0
+  num_partitions: 4
+  normalize: source
+  window_length: 128
+  overlap: 0.5
+  sampling_rate: 50
+  file_pattern: "*.csv"
+  file_patterns: ["*.csv", "*.txt", "*.dat"]
+  npz_patterns: ["*.npz"]
+  npy_patterns: ["*.npy"]
+  mat_patterns: ["*.mat"]
+  has_header: true
+  label_column: label
+  timestamp_column: null
+  subject_column: subject_id
+  session_column: null
+  sensor_columns:
+    - acc_x
+    - acc_y
+    - acc_z
+    - gyro_x
+    - gyro_y
+    - gyro_z
+  invalid_labels: []
+  max_invalid_ratio: 1.0
+  missing_value_strategy: interpolate
+  subject_partitions:
+    - [1, 2, 3, 4, 5]
+    - [6, 7, 8, 9, 10]
+    - [11, 12, 13, 14, 15]
+    - [16, 17, 18, 19, 20]
+preprocessing:
+  window_size: 128
+  overlap: 0.5
+  normalization: source
+
+model:
+  input_channels: 6
+  num_classes: 13
